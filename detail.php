@@ -233,6 +233,8 @@ if (isset($_GET['id'])) {
 .react-box span:hover{
     transform:scale(1.3);
 }
+</style>
+
 <script>
 function showReact(id){
     document.getElementById("react-box-"+id).style.display = "block";
@@ -246,7 +248,5 @@ function react(id, type){
     }).then(()=>location.reload());
 }
 </script>
-
-</style>
 
 <?php include 'includes/footer.php'; ?>

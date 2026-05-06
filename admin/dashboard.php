@@ -9,7 +9,7 @@ require_once '../includes/db_config.php';
 global $conn;
 
 // Kiểm tra quyền Admin
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 2) {
+if (!isset($_SESSION['user']) || (!isset($_SESSION['user']['role']) && !isset($_SESSION['user']['Role'])) || (($_SESSION['user']['role'] ?? $_SESSION['user']['Role']) != 2)) {
     header('Location: ../index.php'); exit();
 }
 

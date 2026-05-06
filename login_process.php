@@ -31,7 +31,17 @@ if (mysqli_num_rows($result) == 1) {
         if (empty($user['Avatar']) || $user['Avatar'] === NULL || $user['Avatar'] === 'NULL') {
             $user['Avatar'] = 'default.png';
         }
+        // Đồng bộ cả key Role và role để tránh lỗi khác nhau viết hoa/viết thường
+        if (isset($user['Role'])) {
+            $user['role'] = $user['Role'];
+        } elseif (isset($user['role'])) {
+            $user['Role'] = $user['role'];
+        }
+
         $_SESSION['user'] = $user;
+        $_SESSION['user_id'] = $user['ID'];
+        $_SESSION['username'] = $user['Username'];
+        $_SESSION['name'] = $user['Name'];
 
         header("Location: index.php");
         exit();
