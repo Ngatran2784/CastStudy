@@ -1,3 +1,10 @@
+<?php
+// Đảm bảo $path được định nghĩa
+if (!isset($path)) {
+    $current_dir = basename(dirname($_SERVER['PHP_SELF']));
+    $path = ($current_dir == 'admin') ? '../' : '';
+}
+?>
 <footer class="footer-dark mt-5 pt-5 pb-3">
     <div class="container">
         <div class="row g-4 mb-5">
@@ -13,7 +20,7 @@
             <div class="col-md-4 col-lg-2 ms-lg-auto">
                 <h6 class="fw-bold mb-4">Khám phá</h6>
                 <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="index.php">Trang chủ</a></li>
+                    <li class="mb-2"><a href="<?php echo $path; ?>index.php">Trang chủ</a></li>
                     <li class="mb-2"><a href="#">Phòng trọ mới</a></li>
                     <li class="mb-2"><a href="#">Ở ghép</a></li>
                 </ul>
@@ -21,8 +28,8 @@
             <div class="col-md-4 col-lg-2">
                 <h6 class="fw-bold mb-4">Hỗ trợ</h6>
                 <ul class="list-unstyled small">
-                    <li class="mb-2"><a href="login.php">Đăng nhập</a></li>
-                    <li class="mb-2"><a href="register.php">Đăng ký</a></li>
+                    <li class="mb-2"><a href="<?php echo $path; ?>login.php">Đăng nhập</a></li>
+                    <li class="mb-2"><a href="<?php echo $path; ?>register.php">Đăng ký</a></li>
                     <li class="mb-2"><a href="#">Chính sách</a></li>
                 </ul>
             </div>
@@ -42,10 +49,5 @@
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-
 <script src="<?php echo $path; ?>assets/js/main.js"></script>
-
-</body>
-</html>
