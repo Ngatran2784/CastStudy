@@ -12,8 +12,8 @@ if (isset($_GET['id'])) {
     
     $sql = "SELECT motel.*, user.Name as owner_name, user.Avatar as owner_avatar 
             FROM motel 
-            JOIN user ON motel.user_id = user.ID 
-            WHERE motel.ID = '$id' AND motel.approve = 1";
+            LEFT JOIN user ON motel.user_id = user.ID 
+            WHERE motel.ID = '$id'";
             
     $result = mysqli_query($conn, $sql);
     
@@ -125,7 +125,7 @@ $roomLng = !empty($room['longitude']) ? (float)$room['longitude'] : $vinhLng;
             <div class="mt-5">
                 <h4 class="fw-bold mb-3">Đánh giá</h4>
 
-                <?php if(isset($_SESSION['user_id'])): ?>
+                <?php if (isset($_SESSION['user']) && isset($_SESSION['user']['ID'])): ?>
                 <form action="add_comment.php" method="POST" class="mb-4">
                     <input type="hidden" name="motel_id" value="<?php echo $room['ID']; ?>">
 

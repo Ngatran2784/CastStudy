@@ -34,6 +34,14 @@ $avatar = $user['Avatar'] ? $user['Avatar'] : 'default.png';
 
                 <h5 class="fw-semibold">Cập nhật thông tin</h5>
                 <form action="update_profile.php" method="POST" enctype="multipart/form-data" class="row g-3 mt-2">
+                    <div class="col-md-6">
+                        <label class="form-label small">Username</label>
+                        <input name="username" value="<?php echo htmlspecialchars($user['Username']); ?>" required class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small">Email</label>
+                        <input name="email" type="email" value="<?php echo htmlspecialchars($user['Email']); ?>" required class="form-control">
+                    </div>
                     <div class="col-md-8">
                         <label class="form-label small">Họ và tên</label>
                         <input name="name" value="<?php echo htmlspecialchars($user['Name']); ?>" required class="form-control">
